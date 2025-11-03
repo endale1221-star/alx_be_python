@@ -1,0 +1,16 @@
+form.form-example{
+    display:table;
+}
+
+div.form-example{
+    display:table-row;
+}
+
+lable, input{
+    display:table-cell;
+    margin-bottom:10px;
+}
+
+lable{
+    padding-right:10px;
+}

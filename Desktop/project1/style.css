@@ -1,0 +1,65 @@
+* {
+  margin: 5px;
+  padding: 6px;
+  background-color: rgb(240, 240, 8);
+}
+.message {
+  text-align: center;
+  color: black;
+  font-style: italic;
+}
+
+.bwm {
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 1px;
+}
+
+.playbutton {
+  text-align: left;
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+
+.number {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.guess {
+  width: 80px;
+  height: 30px;
+  text-align: left;
+}
+
+.right {
+  position: absolute;
+  right: 20px;
+  top: 150px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.left {
+  position: absolute;
+  left: 20px;
+  padding: 30px;
+  margin: 20px;
+}
+
+.check {
+  width: 80px;
+  height: 36px;
+  font-size: 20px;
+}
+
+.score {
+  font-size: 25px;
+}
+
+.highscore {
+  font-size: 25px;
+}
