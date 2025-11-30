@@ -1,32 +1,62 @@
 # bank_account.py
 
 class BankAccount:
-    def __init__(self, initial_balance=0):
-        """Initialize the bank account with an optional initial balance."""
-        self.account_balance = initial_balance
+    """
+    Simple bank account class:
+      - account_balance stored as a float
+      - deposit(amount) -> returns new balance (float)
+      - withdraw(amount) -> returns True if successful, False if insufficient funds
+      - display_balance() -> prints a single line and returns the same string
+    """
 
+    def __init__(self, initial_balance=0):
+        try:
+            self.account_balance = float(initial_balance)
+        except (TypeError, ValueError):
+            raise ValueError("Initial balance must be a number.")
+    
     def deposit(self, amount):
-        """Add the specified amount to the account balance."""
-        if amount > 0:
-            self.account_balance += amount
-            print(f"Deposited: {amount}")
-        else:
-            print("Deposit amount must be positive.")
+        """
+        Add amount to account_balance and return new balance.
+        Raises ValueError if amount is not a positive number.
+        """
+        try:
+            amt = float(amount)
+        except (TypeError, ValueError):
+            raise ValueError("Deposit amount must be a number.")
+        if amt <= 0:
+            raise ValueError("Deposit amount must be positive.")
+        self.account_balance += amt
+        return self.account_balance
 
     def withdraw(self, amount):
-        """Deduct the specified amount if funds are sufficient."""
-        if amount <= 0:
-            print("Withdrawal amount must be positive.")
-            return False
-
-        if self.account_balance >= amount:
-            self.account_balance -= amount
-            print(f"Withdrawn: {amount}")
+        """
+        Attempt to withdraw amount.
+        Returns True and deducts amount if sufficient funds and amount positive.
+        Returns False (and does not change balance) if insufficient funds.
+        Raises ValueError if amount is not a positive number.
+        """
+        try:
+            amt = float(amount)
+        except (TypeError, ValueError):
+            raise ValueError("Withdrawal amount must be a number.")
+        if amt <= 0:
+            raise ValueError("Withdrawal amount must be positive.")
+        if self.account_balance >= amt:
+            self.account_balance -= amt
             return True
         else:
-            print("Insufficient funds.")
             return False
 
     def display_balance(self):
-        """Display the current account balance."""
-        print(f"Current Balance: {self.account_balance}")
+        """
+        Print the current balance in a single, exact line and return that string.
+        Format: "Current Balance: <balance>"
+        Balance uses plain representation (no currency symbol) so tests comparing text can be precise.
+        """
+        line = f"Current Balance: {self.account_balance}"
+        print(line)
+        return line
+
+    def __str__(self):
+        return f"BankAccount(balance={self.account_balance})"
